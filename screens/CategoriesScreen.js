@@ -3,8 +3,8 @@ import {View, Text, StyleSheet} from 'react-native';
 
 const CategoriesScreen = props => {
   return (
-    <View>
-      <Text>The Categories Screen!</Text>
+    <View style={styles.sceen}>
+      <Text>The Category Meal Screen!</Text>
     </View>
   );
 };
