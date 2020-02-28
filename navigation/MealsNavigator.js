@@ -1,4 +1,4 @@
-import {createStactNavigator} from 'react-navigation-stack';
+import {createStackNavigator, createAppContainer} from 'react-navigation-stack';
 
 import CategoriesScreen from ('../screens/CategoriesScreen');
 import CategoriesMealsScreen from ('../screens/CategoriesMealsScreen');
@@ -11,7 +11,7 @@ createStactNavigator({
   Categories: CategoriesScreen,
   CategoriesMeals: {screen: CategoriesMealsScreen},
   MealDetail: MealDetailsScreen,
-  Favorites: FavoritesScreen
-
-
+ // Favorites: FavoritesScreen
 });
+
+export default createAppContainer(MealsNavigator);
