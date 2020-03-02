@@ -24,9 +24,7 @@ export default function App() {
     );
   }
 
-  return (
-    <MealsNavigator />
-  );
+  return  <MealsNavigator />;  
 }
 
 const styles = StyleSheet.create({

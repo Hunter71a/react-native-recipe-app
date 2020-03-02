@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const MealDetailsScreen = props => {
+const MealDetailScreen = props => {
   return (
     <View style={styles.sceen}>
-      <Text>The Meal Details Screen!</Text>
+      <Text>The Meal Detail Screen!</Text>
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MealDetailsScreen;
+export default MealDetailScreen;
