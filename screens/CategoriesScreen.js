@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, Button, FlatList, Platform, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 //import { FlatList } from 'react-native-gesture-handler';
 
 import { CATEGORIES } from '../data/dummy-data';
-import Colors from '../constants/Colors';
+
+
+
 
 
 const CategoriesScreen = props => {
@@ -41,15 +43,7 @@ const CategoriesScreen = props => {
 };
 
 CategoriesScreen.navigationOptions = {
-  headerTitle: 'Meal Categories',
-  headerStyle: {
-    backgroundColor: Colors.primaryColor,
-    alignItems: 'center'
-  },
-  headerTintColor: Platform.OS === 'android' ?  'white' : Colors.primaryColor,
-
-//  alignItems: 'center',
-
+  headerTitle: 'Meal Categories'
 };
 
 const styles = StyleSheet.create({
