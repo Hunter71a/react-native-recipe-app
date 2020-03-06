@@ -18,23 +18,22 @@ const MealsNavigator = createStackNavigator({
       headerTitle: 'Meal Categories'
     }
   },
-    CategoryMeals: {
-      screen: CategoryMealsScreen 
+  CategoryMeals: {
+    screen: CategoryMealsScreen
 
-    },
+  },
   MealDetail: MealDetailScreen
-}, 
-{
-  defaultNavigationOptions: {
-    navigationOptions: {
+},
+  {
+    defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Colors.primaryColor,
-          alignItems: 'center'
+        alignItems: 'center'
       },
       headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
 
-      }
-  }
+    }
+  
   });
 
 export default createAppContainer(MealsNavigator);
