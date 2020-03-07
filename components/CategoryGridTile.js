@@ -1,17 +1,24 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, TouchableNativeFeedback, Platform } from 'react-native';
 
 const CategoryGridTile = props => {
-  return (<TouchableOpacity
-      style={styles.gridItem}
+  let TouchableCmp = TouchableOpacity;
+  if (Platform.OS === 'android' && Platform.Version >= 21) {
+    TouchableCmp = TouchableNativeFeedback
+  }
+  return (
+  <View style={styles.gridItem}>
+  <TouchableCmp
+     // style={styles.gridItem} move to view because android collapses down in TouchableNativeFeedback, although with a nice ripple effect
       onPress={props.onSelect}
       >
       <View 
       style={{...styles.container, ...{backgroundColor: props.color} }}
       >
-        <Text>{props.title}</Text>
+        <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
       </View>
-    </TouchableOpacity>);
+    </TouchableCmp>
+    </View>);
 };
 
 const styles = StyleSheet.create({
@@ -25,13 +32,21 @@ const styles = StyleSheet.create({
     elevation: 3,
     padding: 15,
     justifyContent: 'flex-end',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    
   },
   gridItem: {
     flex: 1,
     padding: 5,
     margin: 10,
     height: 150
+  },
+  title: {
+    fontFamily: 'open-sans-bold',
+    fontSize: 22,
+    textAlign: 'right'
+
+
   }
 });
 
