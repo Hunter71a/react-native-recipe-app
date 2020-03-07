@@ -12,6 +12,10 @@ const MealDetailScreen = props => {
   );
 };
 
+MealDetailScreen.navigationOptions = {
+  headerTitle: 'Meal Details'
+};
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,

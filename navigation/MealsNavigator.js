@@ -19,21 +19,22 @@ const MealsNavigator = createStackNavigator({
     }
   },
   CategoryMeals: {
-    screen: CategoryMealsScreen
-
+    screen: CategoryMealsScreen,
   },
-  MealDetail: MealDetailScreen
+  MealDetail:{
+    screen: MealDetailScreen,
+  headerTitle: 'Meal Details'
+}
 },
   {
+    //initialRouteName: 'MealDetail',   how to set up defined route name different than the order presented above.
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Colors.primaryColor,
         alignItems: 'center'
       },
       headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
-
-    }
-  
+    }  
   });
 
 export default createAppContainer(MealsNavigator);
