@@ -30,8 +30,7 @@ const MealsNavigator = createStackNavigator({
     //initialRouteName: 'MealDetail',   how to set up defined route name different than the order presented above.
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: Colors.primaryColor,
-        alignItems: 'center'
+        backgroundColor: Colors.primaryColor
       },
       headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
     }  
