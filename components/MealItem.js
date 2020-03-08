@@ -4,16 +4,16 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 const MealItem = props => {
   return (
     <View style={styles.mealItem} >
-    <TouchableOpacity onPress={props.onSelectMeal}>
-      <View>
-        <View style={{...styles.mealRow, ...styles.mealHeader}}>
-          <Text>{props.title}</Text>
+      <TouchableOpacity onPress={props.onSelectMeal}>
+        <View>
+          <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
+            <Text>{props.title}</Text>
+          </View>
+          <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+            <Text> {props.duration}</Text>
+          </View>
         </View>
-        <View style={{...styles.mealRow, ...styles.mealDetail}}>
-
-        </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -28,10 +28,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   mealHeader: {
-    height: '80%'
+    height: '90%'
   },
   mealDetail: {
-
+    paddingHorizontal: 10,
+    justifyContent: 'space-between'
   }
 });
 
