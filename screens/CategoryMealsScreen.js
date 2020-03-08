@@ -11,7 +11,12 @@ const CategoryMealsScreen = props => {
   const renderMealItem = itemData => {
     return <MealItem
       title={itemData.item.title}
-      onSelectMeal={() => {}} />;
+      image={itemData.item.imageUrl}
+      duration={itemData.item.duration}
+      affordability={itemData.item.affordability}
+      complexity={itemData.item.complexity}
+      onSelectMeal={() => { }}
+    />;
   };
 
 
@@ -23,8 +28,8 @@ const CategoryMealsScreen = props => {
       <FlatList
         data={displayedMeals}
         keyExtractor={(item, index) => item.id}
-        renderItem={renderMealItem}
-        style= {{width: '100%'}}
+        renderItem={renderMealItem}  
+        style={{ width: '100%' }}
       />
       {/* <Text>The Category Meals Screen!</Text>
       <Text>Selected Category:  {selectedCategory.title}</Text>
