@@ -39,7 +39,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5,
     margin: 10,
-    height: 150
+    height: 150,
+    borderRadius: 10,
+    overflow: 'hidden',
+    elevation: 5,
   },
   title: {
     fontFamily: 'open-sans-bold',
