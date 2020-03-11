@@ -49,7 +49,9 @@ const MealsFavTabNavigator = createBottomTabNavigator({
     }
   },
   Favorites: {
-    screen: FavoritesScreen, navigationOptions: {
+    screen: FavoritesScreen, 
+    navigationOptions: {
+      tabBarLabel: 'Favorites!',
       tabBarIcon: (tabInfo) => {
         return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor} />;
       }
