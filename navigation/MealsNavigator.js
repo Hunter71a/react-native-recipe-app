@@ -15,30 +15,52 @@ import MealDetailScreen from '../screens/MealDetailScreen';
 
 //import FavoritesScreen from ('../screens/FavoritesScreen');
 
-const MealsNavigator = createStackNavigator({
-  Categories: {
-    screen: CategoriesScreen,
-    navigationOptions: {
-      headerTitle: 'Meal Categories'
+const defaultStackNavOptions = {  
+    headerStyle: {
+      backgroundColor: Platform.OS === 'android' ? Colors.primaryColor :
+    },
+    headerTintColor:
+      Platform.OS === 'android' ? 'white' : Colors.primaryColor,
+    headerTitle: 'A Screen'
+  };
+
+  const MealsNavigator = createStackNavigator({
+    Categories: {
+      screen: CategoriesScreen,
+      navigationOptions: {
+        headerTitle: 'Meal Categories'
+      }
+    },
+    CategoryMeals: {
+      screen: CategoryMealsScreen,
+    },
+    MealDetail: {
+      screen: MealDetailScreen
+      // headerTitle: 'Meal Details'
     }
   },
-  CategoryMeals: {
-    screen: CategoryMealsScreen,
-  },
-  MealDetail: {
-    screen: MealDetailScreen
-    // headerTitle: 'Meal Details'
-  }
-},
-  {
+    {
+      //initialRouteName: 'MealDetail',   how to set up defined route name different than the order presented above.
+      defaultNavigationOptions: {
+        headerStyle: {
+          backgroundColor: Colors.primaryColor
+        },
+        headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
+      }
+    });
+
+  const FavNavigator = createStackNavigator({
+    Favorites: FavoritesScree,
+    MealDetail: MealDetailsScreen
+  }, {
     //initialRouteName: 'MealDetail',   how to set up defined route name different than the order presented above.
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Colors.primaryColor
-      },
-      headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
-    }
-  });
+},
+  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
+  }
+});
 
 const tabScreenConfig = {
   Meals: {
@@ -51,7 +73,7 @@ const tabScreenConfig = {
     }
   },
   Favorites: {
-    screen: FavoritesScreen,
+    screen: FavNavigator,
     navigationOptions: {
       tabBarColor: Colors.accentColor,
       tabBarLabel: 'Favorites!',
