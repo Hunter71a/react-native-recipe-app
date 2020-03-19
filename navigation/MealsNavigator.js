@@ -17,7 +17,7 @@ import MealDetailScreen from '../screens/MealDetailScreen';
 
 const defaultStackNavOptions = {  
     headerStyle: {
-      backgroundColor: Platform.OS === 'android' ? Colors.primaryColor :
+      backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
     },
     headerTintColor:
       Platform.OS === 'android' ? 'white' : Colors.primaryColor,
@@ -50,17 +50,13 @@ const defaultStackNavOptions = {
     });
 
   const FavNavigator = createStackNavigator({
-    Favorites: FavoritesScree,
+    Favorites: FavoritesScreen,
     MealDetail: MealDetailsScreen
   }, {
     //initialRouteName: 'MealDetail',   how to set up defined route name different than the order presented above.
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.primaryColor
-},
-  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
+    defaultNavigationOptions:defaultStackNavOptions
   }
-});
+);
 
 const tabScreenConfig = {
   Meals: {
