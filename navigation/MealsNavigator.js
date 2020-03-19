@@ -13,7 +13,7 @@ import Colors from '../constants/Colors';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import MealDetailScreen from '../screens/MealDetailScreen';
 
-//import FavoritesScreen from ('../screens/FavoritesScreen');
+//import FavoritesScreen from '../screens/FavoritesScreen';
 
 const defaultStackNavOptions = {  
     headerStyle: {
@@ -50,8 +50,8 @@ const defaultStackNavOptions = {
     });
 
   const FavNavigator = createStackNavigator({
-    Favorites: FavoritesScreen,
-    MealDetail: MealDetailsScreen
+   // Favorites: FavoritesScreen,
+    //MealDetail: MealDetailsScreen
   }, {
     //initialRouteName: 'MealDetail',   how to set up defined route name different than the order presented above.
     defaultNavigationOptions:defaultStackNavOptions
