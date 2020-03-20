@@ -11,45 +11,46 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealsScreen from '../screens/CategoryMealsScreen';
 import Colors from '../constants/Colors';
 import FavoritesScreen from '../screens/FavoritesScreen';
+import FiltersScreen from '../screens/FiltersScreen';
 import MealDetailScreen from '../screens/MealDetailScreen';
 
 //import FavoritesScreen from '../screens/FavoritesScreen';
 
-const defaultStackNavOptions = {  
-    headerStyle: {
-      backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
-    },
-    headerTintColor:
-      Platform.OS === 'android' ? 'white' : Colors.primaryColor,
-    headerTitle: 'A Screen'
-  };
-
-  const MealsNavigator = createStackNavigator({
-    Categories: {
-      screen: CategoriesScreen
-     // navigationOptions: {
-     //   headerTitle: 'Meal Categories'
-     // }
-    },
-    CategoryMeals: {
-      screen: CategoryMealsScreen,
-    },
-    MealDetail: {
-      screen: MealDetailScreen
-      // headerTitle: 'Meal Details'
-    }
+const defaultStackNavOptions = {
+  headerStyle: {
+    backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
   },
-    {
-      //initialRouteName: 'MealDetail',   how to set up defined route name different than the order presented above.
-      defaultNavigationOptions: defaultStackNavOptions     
-    });
+  headerTintColor:
+    Platform.OS === 'android' ? 'white' : Colors.primaryColor,
+  headerTitle: 'A Screen'
+};
 
-  const FavNavigator = createStackNavigator(
-    {
+const MealsNavigator = createStackNavigator({
+  Categories: {
+    screen: CategoriesScreen
+    // navigationOptions: {
+    //   headerTitle: 'Meal Categories'
+    // }
+  },
+  CategoryMeals: {
+    screen: CategoryMealsScreen,
+  },
+  MealDetail: {
+    screen: MealDetailScreen
+    // headerTitle: 'Meal Details'
+  }
+},
+  {
+    //initialRouteName: 'MealDetail',   how to set up defined route name different than the order presented above.
+    defaultNavigationOptions: defaultStackNavOptions
+  });
+
+const FavNavigator = createStackNavigator(
+  {
     Favorites: FavoritesScreen,
     MealDetail: MealDetailScreen
   },
-   {
+  {
     //initialRouteName: 'MealDetail',   how to set up defined route name different than the order presented above.
     defaultNavigationOptions: defaultStackNavOptions
   }
@@ -87,27 +88,49 @@ const MealsFavTabNavigator =
       }
     })
     : createBottomTabNavigator(tabScreenConfig, {
-    //   Meals: {
-    //     screen: MealsNavigator,
-    //     navigationOptions: {
-    //       tabBarIcon: (tabInfo) => {
-    //         return <Ionicons name='ios-restaurant' size={25} color={tabInfo.tintColor} />;
-    //       }
-    //     }
-    //   },
-    //   Favorites: {
-    //     screen: FavoritesScreen,
-    //     navigationOptions: {
-    //       tabBarLabel: 'Favorites!',
-    //       tabBarIcon: (tabInfo) => {
-    //         return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor} />;
-    //       }
-    //     }
-    //   }
-    // }, {
+      //   Meals: {
+      //     screen: MealsNavigator,
+      //     navigationOptions: {
+      //       tabBarIcon: (tabInfo) => {
+      //         return <Ionicons name='ios-restaurant' size={25} color={tabInfo.tintColor} />;
+      //       }
+      //     }
+      //   },
+      //   Favorites: {
+      //     screen: FavoritesScreen,
+      //     navigationOptions: {
+      //       tabBarLabel: 'Favorites!',
+      //       tabBarIcon: (tabInfo) => {
+      //         return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor} />;
+      //       }
+      //     }
+      //   }
+      // }, {
       tabBarOptions: {
         activeTintColor: Colors.accentColor
       }
     });
 
-export default createAppContainer(MealsFavTabNavigator);
+const FiltersNavigator = createStackNavigator({
+  Filters: FiltersScreen
+});
+
+const MainNavigator = createDrawerNavigator({
+  MealFavs: {
+    screen: MealsFavTabNavigator,
+    navigationOptions: {
+      drawerLabel: 'Meals'
+    }
+  },
+  Filters: FiltersNavigator
+},
+  {
+    contentOptions: {
+      activeTintColor: Colors.accentColor,
+      labelStyle: {
+        fontFamily: 'open-sans-bold'
+      }
+    }
+  });
+
+export default createAppContainer(MainNavigator);
