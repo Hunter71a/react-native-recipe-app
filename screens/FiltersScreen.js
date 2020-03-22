@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, Switch, Platform } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
@@ -7,22 +7,40 @@ import Colors from '../constants/Colors';
 
 const FilterSwitch = props => {
   return (
-  <View style={styles.filterContainer}>
-    <Text>{props.label}</Text>
-    <Switch
-      trackColor={{ true: Colors.primaryColor }}
-      thumbColor={Platform.OS === 'android' ? Colors.primaryColor : ''}
-      value={props.state}
-      onValueChange={props.onChange}
-    />
-  </View>
-  )};
+    <View style={styles.filterContainer}>
+      <Text>{props.label}</Text>
+      <Switch
+        trackColor={{ true: Colors.primaryColor }}
+        thumbColor={Platform.OS === 'android' ? Colors.primaryColor : ''}
+        value={props.state}
+        onValueChange={props.onChange}
+      />
+    </View>
+  )
+};
 
 const FiltersScreen = props => {
+  const { navigation } = props;
   const [isGlutenFree, setIsGlutenFree] = useState(false);
   const [isLactoseFree, setIsLactoseFree] = useState(false);
   const [isVegitarian, setIsVegetarian] = useState(false);
   const [isVegan, setIsVegan] = useState(false);
+
+  const saveFilters = useCallback(() => {
+    const appliedFilters = {
+      glutenFree: isGlutenFree,
+      lactoseFree: isLactoseFree,
+      vegan: isVegan,
+      vegitarian: isVegitarian,
+    };
+
+    console.log(appliedFilters);
+  }, [isGlutenFree, isLactoseFree, isVegan, isVegitarian]);
+
+  useEffect(() => {
+    navigation.setParams({ save: saveFilters });
+  }, [saveFilters]);
+
 
   return (
     <View style={styles.screen}>
@@ -73,6 +91,15 @@ FiltersScreen.navigationOptions = navData => {
             navData.navigation.toggleDrawer();
           }} />
       </HeaderButtons>
+    ),
+    headerRight: (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Save"
+          iconName='ios-save'
+          onPress={navData.navigation.getParam('save')}
+        />
+      </HeaderButtons>
     )
   };
 };
@@ -80,7 +107,7 @@ FiltersScreen.navigationOptions = navData => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: 'center',
+    //justifyContent: 'center',
     alignItems: 'center'
   },
   filterContainer: {
