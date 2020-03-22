@@ -5,6 +5,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { MEALS } from '../data/dummy-data';
 import HeaderButton from '../components/HeaderButton';
 import DefaultText from '../components/DefaultText';
+import { List } from 'react-native-paper';
 
 const ListItem = props => {
   return <View style={styles.listItem}>
@@ -26,11 +27,11 @@ const MealDetailScreen = props => {
       </View>
       <Text style={styles.title}>Ingrediants</Text>
       {selectedMeal.ingrediants.map(ingredient => (
-      <Text key={ingredient}>{ingredient}</Text>
+      <ListItem key={ingredient}>{ingredient}</ListItem>
       ))}
        <Text style={styles.title}>Steps</Text>
        {selectedMeal.steps.map(step => (
-         <Text key={step}>{step}</Text>
+         <ListItem key={step}>{step}</ListItem>
        ))}
      </ScrollView >
   );
@@ -73,7 +74,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 20,
     borderColor: '#ccc',
-    borderWidth: 1
+    borderWidth: 1,
+    padding: 10
   },
   title: {
     fontFamily: 'open-sans-bold',
