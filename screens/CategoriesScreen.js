@@ -4,14 +4,9 @@ import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity } from 'reac
 //import { FlatList } from 'react-native-gesture-handler';
 
 
-
-
 import { CATEGORIES } from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile';
 import HeaderButton from '../components/HeaderButton';
-
-
-
 
 
 const CategoriesScreen = props => {
