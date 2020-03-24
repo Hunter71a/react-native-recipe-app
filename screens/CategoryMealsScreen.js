@@ -5,6 +5,7 @@ import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
 import { CATEGORIES, MEALS } from '../data/dummy-data';
 // import MealItem from '../components/MealItem';
 import MealList from '../components/MealList';
+import DefaultText from '../components/DefaultText';
 
 // import Colors from '../constants/Colors';
 
@@ -18,10 +19,19 @@ const availableMeals = useSelector(state => state.meals.filteredMeals);
     meal => meal.categoryIds.indexOf(catId) >= 0
   );
 
-  return <MealList
+  if (displayedMeals.length === 0) {
+    return (
+    <View style={style.content}>
+<DefaultText>No meals found, maybe check your filters?</DefaultText>
+    </View>
+    );
+  }
+
+  return (
+  <MealList 
     listData={displayedMeals}
-    navigation={props.navigation}
-  />;
+    navigation={props.navigation}  
+  />);
 };
 
 // const renderMealItem = itemData => {
@@ -72,6 +82,15 @@ CategoryMealsScreen.navigationOptions = (navigationData) => {
     headerTitle: selectedCategory.title
   };
 };
+
+const styles = StyleSheet.create({
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
+
 
 // const styles = StyleSheet.create({
 //   screen: {
