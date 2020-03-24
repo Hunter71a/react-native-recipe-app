@@ -15,13 +15,13 @@ const CategoryMealsScreen = props => {
 
 const availableMeals = useSelector(state => state.meals.filteredMeals);
 
-  const displayedMeals = MEALS.filter(
+  const displayedMeals = availableMeals.filter(
     meal => meal.categoryIds.indexOf(catId) >= 0
   );
 
   if (displayedMeals.length === 0) {
     return (
-    <View style={style.content}>
+    <View style={styles.content}>
 <DefaultText>No meals found, maybe check your filters?</DefaultText>
     </View>
     );
